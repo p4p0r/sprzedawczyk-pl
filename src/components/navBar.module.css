@@ -1,0 +1,18 @@
+nav{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width: 100vw;
+    height:10vh;
+    background-color: rgb(138, 138, 196);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 15px;
+    box-sizing: border-box;
+}
+div{
+    text-align: center;
+}
+#userMenu{
+    text-align: right;
+}
