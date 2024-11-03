@@ -3,6 +3,8 @@ import './index.css'
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import PostsPage from './pages/PostsPage.jsx';
+import PostDetailPage from './pages/PostDetailPage.jsx';
+import AddPage from './pages/AddPage.jsx';
 
 import {
   createBrowserRouter,
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
     path: "posts",
     element: <PostsPage/>,
   },
+  {
+    path: "post/:id",
+    element: <PostDetailPage/>
+  },
+  {
+    path: "addpost",
+    element: <AddPage/>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

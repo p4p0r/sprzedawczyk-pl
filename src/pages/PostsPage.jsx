@@ -2,12 +2,25 @@ import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar'
 import classes from './PostsPage.module.css'
 import { Post } from '../components/Post'
-
+import axios from 'axios'
 
 function PostsPage() {
 
   const[userId, setUserId]=useState(null);
   const[userName, setUserName]=useState(null);
+  const[posts, setPosts]=useState([])
+
+  
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/posts')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId')
@@ -23,9 +36,17 @@ function PostsPage() {
     <>
       <NavBar user={userName}/>
       <div className={`${classes.postcontainer}`}>
-        <Post title="samochut" location="korczyna" desc={"opel astra nie bity przebieg 200tys.  nie cofany"} price="2000" image={"https://picsum.photos/200"}/>
-        <Post title="samochut" location="korczyna" desc={"opel astra nie bity przebieg 200tys.  nie cofany"} price="2000" image={"https://picsum.photos/199"}/>
-        <Post title="samochut" location="korczyna" desc={"opel astra nie bity przebieg 200tys.  nie cofany"} price="2000" image={"https://picsum.photos/201"}/>
+      {posts.map(post => (
+          <Post 
+            key={post.post_id}
+            id={post.post_id}
+            title={post.title}
+            location={post.location}
+            price={post.price}
+            image={post.image}
+            desc={post.description}
+          />
+        ))}
       </div>
     </>
   )
