@@ -2,8 +2,17 @@ import React from 'react'
 import './NavBar.module.css'
 import classes from './NavBar.module.css'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function NavBar({user}) {
+
+  const navigate=useNavigate()
+
+  function logOut(){
+    localStorage.clear();
+    navigate("/")
+  }
+
   return (
     <nav>
         <Link to="/addpost">
@@ -12,17 +21,15 @@ function NavBar({user}) {
         </div>
         </Link>
 
-        <Link to="/savedposts">
+        <Link to="/myposts">
         <div className={classes.navItem}>
-            Zapisane ogłoszenia
+            Moje ogłoszenia
         </div>
         </Link>
         
-        <Link to="/user">
-        <div className={classes.navItem}>
-            Użytkownik: {user}
+        <div className={classes.navItem} onClick={logOut}>
+            Użytkownik: {user} (Wyloguj)
         </div>
-        </Link>
     </nav>
   )
 }

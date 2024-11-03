@@ -9,6 +9,13 @@ function LoginPage() {
 
   const navigate=useNavigate();
 
+  useEffect(()=>{
+    if(localStorage.userId!==undefined)
+      navigate('/posts')
+  }, [])
+
+
+
   const [data, setData]=useState({
     loginUsername:'',
     loginPassword:''

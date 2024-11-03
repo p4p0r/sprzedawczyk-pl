@@ -120,13 +120,13 @@ app.post('/api/upload', upload.single('image'), (req,res)=>{
     let imagePath=null;
     
     if(req.file){
-        const dir = './uploads';
+        const dir = 'uploads';
         if (!fs.existsSync(dir))
             fs.mkdirSync(dir);
     
 
         const fileName=`${Date.now()}_${req.file.originalname}`;
-        imagePath=`/uploads/${fileName}`
+        imagePath=`${dir}/${fileName}`
 
         fs.writeFile(imagePath, req.file.buffer, (err)=>{
             if(err){
@@ -153,3 +153,26 @@ app.get("/api/posts", (req, res)=>{
         res.json(result)
     })
 })
+
+app.get('/api/post/:id', (req, res) => {
+    const { id } = req.params;
+    const query = `
+        SELECT posts.*, users.*
+        FROM posts 
+        JOIN users ON posts.user_id = users.user_id 
+        WHERE posts.post_id = ?
+    `;
+
+    db.query(query, [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.send('Bład serwera');
+        }
+
+        if (result.length > 0) {
+            res.json(result[0]);
+        } else {
+            res.send('Nie znaleziono ogłoszenia');
+        }
+    });
+});

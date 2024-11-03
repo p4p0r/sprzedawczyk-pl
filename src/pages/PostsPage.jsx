@@ -3,8 +3,11 @@ import NavBar from '../components/NavBar'
 import classes from './PostsPage.module.css'
 import { Post } from '../components/Post'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function PostsPage() {
+
+  const navigate=useNavigate()
 
   const[userId, setUserId]=useState(null);
   const[userName, setUserName]=useState(null);
@@ -24,9 +27,17 @@ function PostsPage() {
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId')
-    const storedUserName=localStorage.getItem('userName')
-    if(storedUserId)   setUserId(storedUserId)
-    if(storedUserName)  setUserName(storedUserName)
+    const storedUserName = localStorage.getItem('userName')
+
+    if(storedUserId)
+      setUserId(storedUserId)
+    else{
+        alert("Nie jesteś zalogowany!")
+        navigate("/")}
+    
+    if(storedUserName)
+      setUserName(storedUserName)
+
   }, []);
 
 
@@ -43,7 +54,7 @@ function PostsPage() {
             title={post.title}
             location={post.location}
             price={post.price}
-            image={post.image}
+            image={`./${post.image}`}
             desc={post.description}
           />
         ))}
