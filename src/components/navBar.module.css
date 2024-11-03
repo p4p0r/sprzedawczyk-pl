@@ -7,12 +7,16 @@ nav{
     background-color: rgb(138, 138, 196);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 15px;
+    grid-template-rows: 1fr;
     box-sizing: border-box;
 }
-div{
+.navItem{
     text-align: center;
+    color:white;
+    height: 100%;
+    transition-duration: 0.25s;
+    line-height: 10vh;
 }
-#userMenu{
-    text-align: right;
+.navItem:hover{
+    background-color: black;
 }
