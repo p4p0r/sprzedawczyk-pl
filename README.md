@@ -2,6 +2,6 @@
 
 #konta (login | hasło):
 
-admin | admin
-jankowalski | haslo123
-pogromcasumuw | karasiejedzag
+#admin | admin
+#jankowalski | haslo123
+#pogromcasumuw | karasiejedzag
