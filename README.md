@@ -2,7 +2,7 @@
 
 #konta (login | hasło):
 
-#admin | admin
+#admin | admin (administrator, może usuwać dowolne ogłoszenia)
 
 #jankowalski | haslo123
 
