@@ -75,7 +75,7 @@ function PostDetailPage() {
       <h3>Cena: {post.price} PLN</h3>
       <h2>Dodane przez:</h2>
       <h3>{post.username}</h3>
-      {post.phone ? (<h3>{post.phone}</h3>) : ("Użytkownik nie podał numeru telefonu.")}
+      {post.phone ? (<h3>{post.phone}</h3>) : ("Użytkownik nie podał numeru telefonu. ")}
       {post.email ? (<h3>{post.email}</h3>) : ("Użytkownik nie podał adresu e-mail.")}
     </div>
     </>
