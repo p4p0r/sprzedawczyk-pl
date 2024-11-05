@@ -1,0 +1,17 @@
+.main{
+    box-shadow: 0px 0px 30px 15px rgba(149, 150, 179, 1);
+    margin-top: 7vh;
+    border-radius: 30px;
+    padding:5%;
+    width: clamp(100px, 80vw, 1800px);
+    height: clamp(200px, fit-content, 1200px);
+    box-sizing: border-box;
+    text-align: center;
+    margin:auto;
+    margin-top: 7%;
+    margin-bottom: 2%;
+}
+
+.image{
+    max-width: 100%;
+}

@@ -60,7 +60,7 @@ function LoginPage() {
       <input type="text" name="loginUsername" value={data.loginUsername} onChange={handleChange}/>
       
       <h3>Hasło</h3>
-      <input type="password" name="loginPassword" minLength={8} maxLength={30} value={data.loginPassword} onChange={handleChange}/>
+      <input type="password" name="loginPassword" value={data.loginPassword} onChange={handleChange}/>
       
       <br/>
       <button>Zaloguj</button><br/>

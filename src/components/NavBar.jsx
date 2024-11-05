@@ -21,11 +21,17 @@ function NavBar({user}) {
         </div>
         </Link>
 
-        <Link to="/myposts">
+        <Link to="/posts">
+        <div className={classes.navItem}>
+            Ogłoszenia
+        </div>
+        </Link>
+
+        {/* <Link to={`/posts/${localStorage.getItem('userId')}`}>
         <div className={classes.navItem}>
             Moje ogłoszenia
         </div>
-        </Link>
+        </Link> */}
         
         <div className={classes.navItem} onClick={logOut}>
             Użytkownik: {user} (Wyloguj)

@@ -3,8 +3,12 @@ import classes from './AddPage.module.css'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import NavBar from '../components/NavBar'
+import { useNavigate } from 'react-router-dom'
 
 function AddPage() {
+
+    const navigate=useNavigate()
 
     const[data, setData]=useState({
         addTitle:'',
@@ -16,10 +20,22 @@ function AddPage() {
         userId:''
     })
 
+    const[userName, setUserName]=useState(null);
+
     useEffect(() => {
-        const userId = localStorage.getItem('userId');
-        setData((prevData) => ({ ...prevData, userId }));
-      }, []);
+      const storedUserId = localStorage.getItem('userId')
+      const storedUserName = localStorage.getItem('userName')
+  
+      if(storedUserId)
+        setData({...data, userId:storedUserId})
+      else{
+          alert("Nie jesteś zalogowany!")
+          navigate("/")}
+      
+      if(storedUserName)
+        setUserName(storedUserName)
+  
+    }, []);
 
     function handleChange(e){
         const{name, value}=e.target;
@@ -52,11 +68,12 @@ function AddPage() {
           .catch(error => {
             console.error("Error: ", error);
           });
-
+          navigate("/posts")
     }
 
   return (
     <div className={classes.main}>
+    <NavBar user={userName}/>
     <form onSubmit={handleSubmit}>
         <h2>Dodaj ogłoszenie</h2>
         
@@ -84,7 +101,7 @@ function AddPage() {
         <input type="number" name="addPrice" value={data.addPrice} onChange={handleChange} required/> PLN
 
         <h3>Zdjęcie</h3>
-        <input type="file" accept=".png, .jpg, .bmp" name="addImage" value={data.addImage} onChange={handleFileChange} /><br/>
+        <input type="file" accept=".png, .jpg, .bmp, .jpeg" name="addImage" value={data.addImage} onChange={handleFileChange} /><br/>
 
         <input type="submit" value="Dodaj ogłoszenie!" className={classes.submitForm}/><br/>
 

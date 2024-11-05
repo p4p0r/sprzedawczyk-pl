@@ -147,7 +147,7 @@ app.post('/api/upload', upload.single('image'), (req,res)=>{
 })
 
 app.get("/api/posts", (req, res)=>{
-    const query="SELECT * FROM posts"
+    const query="SELECT * FROM posts JOIN users ON posts.user_id = users.user_id"
     db.query(query, (err, result)=>{
         if(err) console.log(err)
         res.json(result)

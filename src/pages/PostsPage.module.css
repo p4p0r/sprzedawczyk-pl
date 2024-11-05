@@ -1,5 +1,35 @@
+.searchbar{
+    position:fixed;
+    width: 20vw;
+    height: fit-content;
+    font-size: 1.5em;
+    top:25%;
+    text-align: center;
+    border:1px solid black;
+    background-color: rgb(138, 138, 196);
+    opacity:10%;
+    transition-duration: 0.3s;
+}
+
+.searchbox{
+    position: fixed;
+}
+
+.searchbox:hover +.searchbar{
+    opacity: 1;
+}
+
+.searchbox:focus +.searchbar{
+    opacity: 1;
+}
+
+.searchbar > input{
+    font-size: 0.75em;
+    
+}
+
 .postcontainer{
-    margin: auto;
+    margin:auto;
     margin-top: 15vh;
     align-items: center; 
     width: 80vw;

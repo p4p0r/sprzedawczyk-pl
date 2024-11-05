@@ -1,7 +1,7 @@
 import classes from './Post.module.css'
 import { Link } from 'react-router-dom'
 
-export function Post({id, title, location, price, image, desc}){
+export function Post({id, title, location, price, image, desc, remove}){
 
     function savePost(){
         console.log(id)
@@ -9,7 +9,7 @@ export function Post({id, title, location, price, image, desc}){
 
     let _image=image
 
-    if(image=="undefined" || image=="null"){
+    if(image=="undefined" || image=="null" || image=="./null"){
         _image='./uploads/NO_IMAGE_PROVIDED.png'
     }
 
@@ -22,6 +22,7 @@ export function Post({id, title, location, price, image, desc}){
                     {title}
                 </Link>
                 , {location}
+                {remove==true ? {USUŃ} : ('')}
             </div>
             
             <div className={classes.image}>

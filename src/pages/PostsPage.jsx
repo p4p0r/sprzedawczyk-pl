@@ -4,6 +4,7 @@ import classes from './PostsPage.module.css'
 import { Post } from '../components/Post'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import SearchBar from '../components/SearchBar'
 
 function PostsPage() {
 
@@ -37,17 +38,14 @@ function PostsPage() {
     
     if(storedUserName)
       setUserName(storedUserName)
-
   }, []);
-
-
-  const lorem="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel libero nec quam luctus consectetur. In mattis vestibulum rutrum. Quisque sit amet purus tortor. Mauris ac augue placerat libero volutpat rhoncus a in nisi. Duis ut ex fringilla, mattis nisi ut, viverra arcu. Maecenas nec arcu a velit aliquet finibus. Vivamus ut ligula at nibh auctor mattis. Etiam et dictum magna, a accumsan tellus."
 
   return (
     <>
       <NavBar user={userName}/>
-      <div className={`${classes.postcontainer}`}>
-      {posts.map(post => (
+        <SearchBar/>
+        <div className={classes.postcontainer}>
+        {posts.map(post => (
           <Post 
             key={post.post_id}
             id={post.post_id}
@@ -58,7 +56,7 @@ function PostsPage() {
             desc={post.description}
           />
         ))}
-      </div>
+      </div>  
     </>
   )
 }
