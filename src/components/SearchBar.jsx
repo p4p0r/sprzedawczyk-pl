@@ -24,11 +24,13 @@ function SearchBar({ setSearchResults }) {
   }
 
   return (
+    <>
+    <div className={classes.searchbox}>Szukaj</div>
     <div className={classes.searchbar}>
-      <div className={classes.searchbox}>Szukaj:</div>
       <form onSubmit={handleSubmit}>
+        Treść:<br/>
         <input type="text" name="searchText" onChange={handleChange} /><br />
-        Kategoria:
+        Kategoria:<br/>
         <select name="searchCategory" onChange={handleChange}>
           <option value="anycategory">Dowolna</option>
           <option value="automotive">Motoryzacja</option>
@@ -41,15 +43,18 @@ function SearchBar({ setSearchResults }) {
         </select>
 
         <div>Cena:</div>
-        Od: <input type="number" name="searchFromPrice" onChange={handleChange} /> PLN<br />
-        Do: <input type="number" name="searchToPrice" onChange={handleChange} /> PLN
+        Od: <input type="number" className={classes.inputprice} name="searchFromPrice" onChange={handleChange} /> PLN <br/>
+        Do: <input type="number" className={classes.inputprice} name="searchToPrice" onChange={handleChange} /> PLN
 
         <div>Miejscowość</div>
         <input type="text" name="searchLocation" onChange={handleChange} />
 
-        <button type="submit">SZUKAJ!!!!!!!!!!!!</button>
+        <button type="submit">Wyszukaj</button>
       </form>
-    </div>
+      </div>
+      <div className={classes.searchbox2}>Sprzedawczyk.pl</div>
+    </>
+    
   )
 }
 

@@ -47,7 +47,7 @@ function PostDetailPage() {
       _category="Elektronika"
       break;
     case 'clothing':
-      _category="Odzież, obuwe"
+      _category="Odzież, obuwie"
       break;
     case 'home':
       _category="Dom i ogród"
@@ -71,7 +71,7 @@ function PostDetailPage() {
       {post.image!="null" ? (<img className={classes.image} src={`http://localhost:8000/${post.image}`} alt={post.title}/>) : <h2>Nie dodano zdjęcia.</h2>}
       <h3>Lokalizacja: {post.location}</h3>
       <h3>Kategoria: {_category}</h3>
-      <h2>Opis:</h2><p>{post.description}</p>
+      <h2>Opis:</h2><p className={classes.description}>{post.description}</p>
       <h3>Cena: {post.price} PLN</h3>
       <h2>Dodane przez:</h2>
       <h3>{post.username}</h3>

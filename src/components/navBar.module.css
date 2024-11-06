@@ -4,19 +4,30 @@ nav{
     left:0px;
     width: 100vw;
     height:10vh;
-    background-color: rgb(138, 138, 196);
+    max-height: 10vh;
+    background-color: rgb(78, 160, 136);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
     box-sizing: border-box;
+    font-size:1.75em;
+    border-bottom:1px solid black;
+    overflow: hidden;
 }
 .navItem{
     text-align: center;
     color:white;
     height: 100%;
-    transition-duration: 0.25s;
+    transition: all 0.25s ease;
     line-height: 10vh;
 }
 .navItem:hover{
-    background-color: black;
+    background-color: rgb(240, 240, 240);
+    color:black;
+}
+@media screen and (max-width:1000px){
+    nav{
+        font-size:1em;
+        line-height: normal;
+    }
 }
