@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import classes from '../pages/PostsPage.module.css'
+import classes from './SearchBar.module.css'
 import axios from 'axios'
 
 function SearchBar({ setSearchResults }) {
@@ -25,36 +25,35 @@ function SearchBar({ setSearchResults }) {
 
   return (
     <>
-    <div className={classes.searchbox}>Szukaj</div>
-    <div className={classes.searchbar}>
-      <form onSubmit={handleSubmit}>
-        Treść:<br/>
-        <input type="text" name="searchText" onChange={handleChange} /><br />
-        Kategoria:<br/>
-        <select name="searchCategory" onChange={handleChange}>
-          <option value="anycategory">Dowolna</option>
-          <option value="automotive">Motoryzacja</option>
-          <option value="electronics">Elektronika</option>
-          <option value="clothing">Odzież, obuwie</option>
-          <option value="home">Dom i ogród</option>
-          <option value="children">Dla dzieci</option>
-          <option value="activity">Sport, aktywność</option>
-          <option value="other">Inne</option>
-        </select>
+      <div className={classes.searchbox}>Szukaj</div>
+      <div className={classes.searchbar}>
+        <form onSubmit={handleSubmit}>
+          Treść:<br/>
+          <input type="text" name="searchText" onChange={handleChange} /><br />
+          Kategoria:<br/>
+          <select name="searchCategory" onChange={handleChange}>
+            <option value="anycategory">Dowolna</option>
+            <option value="automotive">Motoryzacja</option>
+            <option value="electronics">Elektronika</option>
+            <option value="clothing">Odzież, obuwie</option>
+            <option value="home">Dom i ogród</option>
+            <option value="children">Dla dzieci</option>
+            <option value="activity">Sport, aktywność</option>
+            <option value="other">Inne</option>
+          </select>
 
-        <div>Cena:</div>
-        Od: <input type="number" className={classes.inputprice} name="searchFromPrice" onChange={handleChange} /> PLN <br/>
-        Do: <input type="number" className={classes.inputprice} name="searchToPrice" onChange={handleChange} /> PLN
+          <div>Cena:</div>
+          Od: <input type="number" className={classes.inputprice} name="searchFromPrice" onChange={handleChange} /> PLN <br/>
+          Do: <input type="number" className={classes.inputprice} name="searchToPrice" onChange={handleChange} /> PLN
 
-        <div>Miejscowość</div>
-        <input type="text" name="searchLocation" onChange={handleChange} />
+          <div>Miejscowość</div>
+          <input type="text" name="searchLocation" onChange={handleChange} />
 
-        <button type="submit">Wyszukaj</button>
-      </form>
+          <button type="submit">Wyszukaj</button>
+        </form>
       </div>
       <div className={classes.searchbox2}>Sprzedawczyk.pl</div>
     </>
-    
   )
 }
 

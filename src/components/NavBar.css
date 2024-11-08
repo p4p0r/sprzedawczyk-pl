@@ -9,7 +9,9 @@ nav{
     grid-template-columns: repeat(3, 1fr);
     padding: 15px;
     box-sizing: border-box;
+    cursor: pointer;
 }
+
 div{
     text-align: center;
 }

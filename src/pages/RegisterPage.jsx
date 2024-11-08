@@ -62,7 +62,7 @@ export default function RegisterPage() {
       <form action="" method="post" onSubmit={handleSubmit}>
         <h2>Zarejestruj się</h2>
 
-        <h3>Login</h3>
+        <h3>Login*</h3>
         <input
           type="text"
           name="registerUsername"
@@ -73,7 +73,7 @@ export default function RegisterPage() {
           required
         />
 
-        <h3>Hasło</h3>
+        <h3>Hasło*</h3>
         <input
           type="password"
           name="registerPassword"
@@ -84,7 +84,7 @@ export default function RegisterPage() {
           required
         />
 
-        <h3>Powtórz hasło</h3>
+        <h3>Powtórz hasło*</h3>
         <input
           type="password"
           name="registerPassword2"
@@ -111,9 +111,10 @@ export default function RegisterPage() {
           value={data.registerPhone}
           onChange={handleChange}
         />
-
-        <br />
+        
+        <br/>
         <button type="submit">Zarejestruj się!</button><br />
+        (* - wymagane)
         <p>{message}</p>
         <span>Masz już konto? <Link to="/">Zaloguj się!</Link></span>
       </form>
