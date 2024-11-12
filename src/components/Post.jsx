@@ -36,7 +36,12 @@ export function Post({ id, title, location, price, image, desc, userId, currentU
                     {title}
                 </Link>, {location}
                 {isAuthorized && (
-                    <span className={classes.remove} onClick={handleDelete}>Usuń</span>
+                    <>
+                        <span className={classes.remove} onClick={handleDelete}>Usuń</span>
+                        <Link to={`/edit/${id}`}>
+                        <span className={classes.remove} style={{backgroundColor:"green"}}>Edytuj</span>
+                        </Link>
+                    </>
                 )}
             </div>
 

@@ -55,7 +55,7 @@ db.connect((err) => {
 // ***** logowanie *****
 app.post('/api/login', (req, res) => {
     const { loginUsername, loginPassword } = req.body;
-    const query = `SELECT * FROM users WHERE username='${loginUsername}'`;
+    const query = `SELECT user_id, username, password, admin FROM users WHERE username='${loginUsername}'`;
 
     db.query(query, (err, result) => {
         if (err) {
@@ -80,7 +80,7 @@ app.post('/api/login', (req, res) => {
 // ***** rejestracja *****
 app.post('/api/register', (req, res) => {
     const { registerUsername, registerPassword, registerPassword2, registerEmail, registerPhone } = req.body;
-    const query = `SELECT * FROM users WHERE username='${registerUsername}'`;
+    const query = `SELECT username FROM users WHERE username='${registerUsername}'`;
 
     db.query(query, (err, result) => {
         if (err) {
@@ -136,6 +136,21 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
     });
 });
 
+// ***** edytowanie ogłoszeń *****
+
+app.post("/api/edit/:id", (req, res)=>{
+    const { id }=req.params;
+    const{ editDescription, editPrice }=req.body;
+    const query=`UPDATE posts SET description='${editDescription}', price='${editPrice}' WHERE post_id=${id}`
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error('Error inserting data:', err);
+            return res.status(500).send('Database error');
+        }
+        res.send('Form submitted successfully');
+    });
+})
+
 // ***** pobieranie ogłoszeń z bazy danych *****
 app.get("/api/posts", (req, res) => {
     const query = "SELECT * FROM posts JOIN users ON posts.user_id = users.user_id";
@@ -176,7 +191,7 @@ app.get('/api/search', (req, res) => {
     let query = "SELECT * FROM posts WHERE 1=1";
 
     if (searchText) {
-        query += ` AND title LIKE '%${searchText}%'`;
+        query += ` AND title LIKE '%${searchText}%' OR description LIKE '%${searchText}%'`;
     }
     if (searchCategory && searchCategory !== 'anycategory') {
         query += ` AND category='${searchCategory}'`;

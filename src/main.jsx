@@ -5,6 +5,7 @@ import RegisterPage from './pages/RegisterPage.jsx';
 import PostsPage from './pages/PostsPage.jsx';
 import PostDetailPage from './pages/PostDetailPage.jsx';
 import AddPage from './pages/AddPage.jsx';
+import EditPage from './pages/EditPage';
 
 import {
   createBrowserRouter,
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "addpost",
     element: <AddPage/>
+  },
+  {
+    path:"edit/:id",
+    element:<EditPage/>
   }
 ]);
 
